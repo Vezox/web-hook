@@ -15,6 +15,7 @@ app.post("/telegram", (req, res) => {
   const stt = arr[1];
   const name = arr[2];
   const remaining = arr[3];
+  if (!webhook) return res.status(400).json({ message: "Webhook is required" });
   axios.post(webhook, {
     text: `Tiền của ${name} còn lại ${remaining} cá`,
     sheet: arr,
